@@ -1,19 +1,18 @@
 /*************************************************************
 * 1. Name:
-*      -Daryl Appleton-
+*      -Daryl Appleton, Kai Zhang-
 * 2. Assignment Name:
 *      Practice 02: Physics simulator
 * 3. Assignment Description:
 *      Compute how the Apollo lander will move across the screen
 * 4. What was the hardest part? Be as specific as possible.
-*      -a paragraph or two about how the assignment went for you-
+*      Understanding the physics formula and how things connecting to each other.
 * 5. How long did it take for you to complete the assignment?
-*      -total time in hours: reading the assignment, submitting, etc.
+*      3.5 hours (It took us very long to debug the code).
 **************************************************************/
 
 #include <iostream>  // for CIN and COUT
 #include <math.h>
-#include <ctime>
 
 using namespace std;
 
