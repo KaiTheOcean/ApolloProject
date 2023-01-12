@@ -147,7 +147,7 @@ double computeHorizontalComponent(double a, double total)
 ***********************************************/
 double computeTotalComponent(double x, double y)
 {
-   double total = sqrt(pow(x, 2) + pow(y, 2));
+   double total = sqrt(x * x + y * y);
    return total;
 }
 
@@ -201,7 +201,7 @@ void displayData(int seconds, double x, double y, double dx, double dy, double v
 {
    cout.setf(ios::fixed | ios::showpoint);
    cout.precision(2);
-   cout << seconds << "s - x, y: (" << x << ", " << y << ")m dx, dy: (" << dx << ", " << dy << ") m/s speed: " << v << "m/s angle: " << aDegrees << "deg\n";
+   cout << seconds + 1<< "s - x,y: (" << x << ", " << y << ")m dx,dy: (" << dx << ", " << dy << ") m/s speed: " << v << "m/s angle: " << aDegrees << "deg\n";
 }
 
 /****************************************************************
@@ -226,13 +226,22 @@ int main()
    double ddy;
    double v;
 
-   double aRadians = radiansFromDegrees(aDegrees); // Angle in radians
-
    double accelerationThrust = THRUST / WEIGHT; // Acceleration due to thrust
 
    // Go through the simulator five times
-   for (int i = 0; i < 5; i++)
+   for (int i = 0; i < 10; i++)
    {
+      if (i == 5)
+      {
+         cout << endl;
+         cout << "What is the new angle of the LM where 0 is up (degrees)? ";
+         cin >> aDegrees;
+         cout << endl;
+         cout << "For the next 5 seconds with the main engine on, the position of the lander is: \n" << endl;
+      }
+      
+      double aRadians = radiansFromDegrees(aDegrees); // Angle in radians
+      
       ddxThrust = computeHorizontalComponent(aRadians, accelerationThrust); // Horizontal acceleration due to thrust
       ddx = ddxThrust; // Total horizontal acceleration
       ddyThrust = computeVerticalComponent(aRadians, accelerationThrust); // Vertical acceleration due to thrust
@@ -247,8 +256,7 @@ int main()
       cout.setf(ios::fixed | ios::showpoint);
       cout.precision(2);
 
-      displayData(t, x, y, dx, dy, v, aDegrees);
-
+      displayData(i, x, y, dx, dy, v, aDegrees);
     }
 
    return 0;
