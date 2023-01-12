@@ -150,7 +150,7 @@ double computeHorizontalComponent(double a, double total)
  ***********************************************/
 double computeTotalComponent(double x, double y)
 {
-   double total = sqrt(pow(x, 2) + (y * y));
+   double total = sqrt(x * x + (y * y));
    return total;
 }
 
